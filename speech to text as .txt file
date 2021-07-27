@@ -1,0 +1,20 @@
+import speech_recognition as sr
+r =sr.Recognizer()
+with sr.Microphone() as source:
+    print ("Please say somthing.\n")
+    audio = r.listen(source)
+    IBM_USERNAME = "apikey"  
+    IBM_PASSWORD = "s6jhLqXOzdW282x4H3wqt2MU8VedjAQ2ddgir1OrXDO4"
+    result = r.recognize_ibm(audio, username=IBM_USERNAME, password=IBM_PASSWORD)
+    try:
+        print(" You have said \n " + result)
+    except sr.UnknownValueError:
+        print("Sorry I could not understand the  audio ")
+    except sr.RequestError as e:
+      print ("Error \n  ")
+with open('my_result.txt',mode ='w') as file: 
+   file.write("Recognized text:") 
+   file.write("\n") 
+   file.write(result) 
+print("Exporting process completed!")   
+
