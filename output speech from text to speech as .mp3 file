@@ -1,0 +1,11 @@
+from gtts import gTTS
+import os
+
+from gtts import gTTS
+fh = open("my_result.txt","r")
+mytext = fh.read().replace("\n", " ")
+language = 'en'
+output = gTTS(text=mytext, lang=language, slow= False)
+output.save("sound.mp3")
+fh.close()
+os.system("start sound.mp3")
